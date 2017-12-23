@@ -2,12 +2,15 @@ import { connect } from 'react-redux'
 import CategoryList from '../Component/CategoryList'
 import { getCategory, getCategorySuccess, getCategoryFailure} from '../Action'
 
-const mapStateToProps = (state) => ({
-    isFetching:state.isFetching,
-    result:state.result,
-    lastUpdated:state.lastUpdated,
-    error:state.error,
-})
+const mapStateToProps = (state) => {
+    const { categories } = state;
+    return ({
+        isFetching:categories.isFetching,
+        result:categories.result,
+        lastUpdated:categories.lastUpdated,
+        error:categories.error,
+    })
+}
 
 const mapDispatchToProps = (dispatch,wonProps) => ({
     getCategory:() => {
